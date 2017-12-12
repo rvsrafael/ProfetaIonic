@@ -30,7 +30,7 @@ export class EighthGamesProvider {
       this.http.get(this.apiUrl)
       .subscribe(data => {
         this.eighthGames = data;
-        this.eighthGames  = this.eighthGames.results;
+        this.eighthGames  = this.eighthGames.eighthGames;
         resolve(this.eighthGames);
       }, err => {
         console.log(err);
