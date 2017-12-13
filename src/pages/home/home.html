@@ -9,34 +9,30 @@
 <ion-content padding>
 
   <ion-list>
+        <ion-item *ngFor="let game of eighthGames">
 
-    <ion-item *ngFor="let game of eighthGames">
+          <ion-card>
+            <ion-card-content>
 
-      <p>{{game.teamA.name}}</p>
-      <p>{{game.teamA.goal}}</p>
-
-      <!-- <ion-avatar item-left> -->
-        <img src="{{game.teamA.icon}}">
-      <!-- </ion-avatar> -->
-
-
-<p>x</p>
+              <ion-icon item-start large>
+                <img src="{{game.teamA.icon}}">
+              </ion-icon>
 
 
-      <!-- <ion-avatar item-left> -->
-        <img src="{{game.teamB.icon}}">
-      <!-- </ion-avatar> -->
+                <p>{{game.teamA.name}}</p>
+                <p>{{game.teamA.goal}}</p>
 
-      <p>{{game.teamB.name}}</p>
-      <p>{{game.teamB.goal}}</p>
+              <ion-icon item-start large>
+                <img src="{{game.teamB.icon}}">
+              </ion-icon>
+                <p>{{game.teamB.name}}</p>
+                <p>{{game.teamB.goal}}</p>
+            </ion-card-content>
 
+            <p>{{game.stadium}}</p>
+          </ion-card>
 
-
-      <p>{{game.stadium}}</p>
-
-    </ion-item>
-
+        </ion-item>
 
   </ion-list>
-
 </ion-content>
