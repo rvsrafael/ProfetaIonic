@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RegisterPage } from '../register/register';
+import { HomePage } from '../home/home';
 
 
 /**
@@ -25,9 +26,12 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  verDetalhes(): void {
+  public openRegister(): void {
     this.navCtrl.push(RegisterPage);
   }
 
+  public openHome(): void {
+    this.navCtrl.setRoot(HomePage);
+  }
 
 }

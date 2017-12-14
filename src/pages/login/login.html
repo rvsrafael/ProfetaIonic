@@ -14,22 +14,30 @@
 
 
 <ion-content padding>
-  <ion-list>
 
+  <div class="header">
+      <img src="assets/imgs/logo.png"  height="150px">
+  </div>
+
+
+  <ion-list>
     <ion-item>
       <ion-label floating>Usuário</ion-label>
-      <ion-input type="txtUsername"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" placeholder="Usuário"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Senha</ion-label>
-      <ion-input type="txtPassword"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" placeholder="Senha"></ion-input>
     </ion-item>
-
   </ion-list>
 
-  <button ion-button>Entrar</button>
+  <div class="button-center">
+        <button ion-button block (click)="openHome();">Entrar</button>
+  </div>
 
-  <p>Ainda não possui um cadastro, cadastre-se através do botão abaixo.</p>
-  <button ion-button onclick="verDetalhes">Cadastre-se</button>
+  <p class="p-center" >Ainda não possui um cadastro, cadastre-se através do botão abaixo.</p>
+  <div class="button-center">
+    <button ion-button (click)="openRegister();">Cadastre-se</button>
+  </div>
 </ion-content>

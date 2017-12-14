@@ -41,6 +41,32 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
+
+  openPageDefault(page: any) {
+          switch (page) {
+              case 'Login':
+                  this.nav.push(LoginPage);
+                  break;
+              case 'Register':
+                  this.nav.push(RegisterPage);
+                  break;
+              case 'Home':
+                  this.nav.setRoot(page.component);
+                  break;
+              case 'Ranking':
+                  this.nav.push(ListPage);
+                  break;
+              case 'exit':
+                  this.platform.exitApp();
+                  break;
+              default:
+                  this.rootPage = LoginPage;
+                  break;
+          }
+      }
+
+
+
 }
