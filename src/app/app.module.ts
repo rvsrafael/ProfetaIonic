@@ -14,6 +14,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { GamesProvider } from '../providers/games/games';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { UserProvider } from '../providers/user/user';
+
+
+  // Initialize Firebase
+  var firebaseConfig = {
+    apiKey: "AIzaSyBKrmHk9hpodEnQh5z66QTUtd6Iko2l3Lk",
+    authDomain: "profeta-da-bola.firebaseapp.com",
+    databaseURL: "https://profeta-da-bola.firebaseio.com",
+    projectId: "profeta-da-bola",
+    storageBucket: "profeta-da-bola.appspot.com",
+    messagingSenderId: "539212248287"
+  };
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +42,10 @@ import { GamesProvider } from '../providers/games/games';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
 
   ],
   bootstrap: [IonicApp],
@@ -40,7 +60,8 @@ import { GamesProvider } from '../providers/games/games';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GamesProvider
+    GamesProvider,
+    UserProvider
   ]
 })
 export class AppModule {}

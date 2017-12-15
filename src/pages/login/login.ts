@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
+import { UserProvider } from '../../providers/user/user';
+
 
 
 /**
@@ -19,7 +21,7 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider ) {
   }
 
   ionViewDidLoad() {
@@ -27,11 +29,12 @@ export class LoginPage {
   }
 
   public openRegister(): void {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(HomePage);
   }
 
   public openHome(): void {
-    this.navCtrl.setRoot(HomePage);
+    console.log('saveUser');
+    this.userProvider.saveUser;
   }
 
 }
