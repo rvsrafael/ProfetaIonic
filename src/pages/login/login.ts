@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
+import { DatabaseProfetaProvider } from '../../providers/database-profeta/database-profeta';
 
 
 /**
@@ -19,7 +20,7 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, dbProvider: DatabaseProfetaProvider) {
   }
 
   ionViewDidLoad() {

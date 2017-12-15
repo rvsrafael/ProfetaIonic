@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpClientModule } from '@angular/common/http';
 import { GamesProvider } from '../providers/games/games';
+import { DatabaseProfetaProvider } from '../providers/database-profeta/database-profeta';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { GamesProvider } from '../providers/games/games';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GamesProvider
+    GamesProvider,
+    DatabaseProfetaProvider
   ]
 })
 export class AppModule {}

@@ -7,6 +7,9 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { DatabaseProfetaProvider } from '../providers/database-profeta/database-profeta';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -18,9 +21,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
+              public dbProvider: DatabaseProfetaProvider ) {
     this.initializeApp();
 
+    dbProvider.createDatabase();
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -34,6 +41,8 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+
+
       this.splashScreen.hide();
     });
   }
