@@ -40,4 +40,21 @@
   <div class="button-center">
     <button ion-button (click)="openRegister();">Cadastre-se</button>
   </div>
+
+
+
+
+<ion-list>
+  <ion-item-sliding *ngFor="let cerveja of listaUser | async">
+    <ion-item>
+      <p>
+        <ion-note item-start>
+          <strong>{{cerveja.nome}}</strong>
+        </ion-note>
+      </p>
+    </ion-item>
+  </ion-item-sliding>
+</ion-list>
+
+
 </ion-content>

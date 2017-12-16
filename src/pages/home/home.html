@@ -7,6 +7,53 @@
   </ion-navbar>
 </ion-header>
 
+<ion-content>
+
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let game of eighthGames">
+        <ion-card>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div><img src="{{game.teamA.icon}}"></div>
+            </ion-col>
+            <ion-col>
+              <div><img src="{{game.teamB.icon}}"></div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div><p class="p-right">{{game.teamA.name}}</p></div>
+            </ion-col>
+            <ion-col>
+              <div>X</div>
+            </ion-col>
+            <ion-col>
+              <div><p class="p-left">{{game.teamB.name}}</p></div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div><h3>{{game.teamA.goal}}</h3></div>
+            </ion-col>
+            <ion-col>
+              <div><h3>{{game.teamB.goal}}</h3></div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<!--
 <ion-content padding>
 
   <ion-list>
@@ -37,4 +84,4 @@
 
     </ion-list>
 
-</ion-content>
+</ion-content> -->

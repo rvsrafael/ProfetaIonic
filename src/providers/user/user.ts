@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/do';
@@ -19,16 +20,30 @@ import { User } from '../../model/user';
 @Injectable()
 export class UserProvider {
 
- private listaUser = this.db.list<User>('user-list', );
-  //items: Observable<any>;
+  private listaUser = this.db.list<User>('user-list', );
+  private user1:  User = new User();
+  private listauser2: Observable<User[]>;
+  private user4: any;
+
+ private keys: User[];
 
   constructor(public http: HttpClient,
               public db: AngularFireDatabase) {
 
   }
 
+  collectionUser(){
+    console.log("oi .....");
+    this.listaUser = this.db.list<User>('user-list', ref => ref.orderByChild('nome').equalTo('rafael') );
+
+    // this.user4 = this.db.list<User>('user-list',
+    //                             ref => ref.orderByChild('nome').equalTo('rafael') );
+
+
+    return this.listaUser;
+  }
+
   saveUser(user: User) {
-    //this.db.list("/myUsers/").push(user);
     return this.listaUser.push(user);
   }
 
