@@ -18,13 +18,15 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { UserProvider } from '../providers/user/user';
+import { User } from '../model/user';
+
 
 
   // Initialize Firebase
   var firebaseConfig = {
     apiKey: "AIzaSyBKrmHk9hpodEnQh5z66QTUtd6Iko2l3Lk",
     authDomain: "profeta-da-bola.firebaseapp.com",
-    databaseURL: "https://profeta-da-bola.firebaseio.com",
+    databaseURL: "https://profeta-da-bola.firebaseio.com/",
     projectId: "profeta-da-bola",
     storageBucket: "profeta-da-bola.appspot.com",
     messagingSenderId: "539212248287"

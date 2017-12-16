@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
+import { User } from '../../model/user';
 
 
 
@@ -21,6 +22,8 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class LoginPage {
 
+  public userDefault:  User = new User();
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider ) {
   }
 
@@ -29,12 +32,16 @@ export class LoginPage {
   }
 
   public openRegister(): void {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(RegisterPage);
   }
 
   public openHome(): void {
-    console.log('saveUser');
-    this.userProvider.saveUser;
+    if (false) {
+
+    } else {
+
+    }
+
   }
 
 }

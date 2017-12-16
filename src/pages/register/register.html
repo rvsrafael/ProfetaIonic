@@ -18,22 +18,27 @@
 
     <ion-item>
       <ion-label floating>Name</ion-label>
-      <ion-input type="txtName"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.nome"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Usuário</ion-label>
-      <ion-input type="txtUsername"></ion-input>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Idade</ion-label>
+      <ion-input type="number" [(ngModel)]="user.idade"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Senha</ion-label>
-      <ion-input type="txtPassword"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.senha"></ion-input>
     </ion-item>
 
   </ion-list>
 
   <div class="button-center">
-        <button ion-button block>Cadastrar</button>
+        <button ion-button block (click)="register(user);">Cadastrar</button>
   </div>
 </ion-content>

@@ -7,6 +7,8 @@ import 'rxjs/add/operator/do';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseApp } from 'angularfire2';
 import * as firebase from 'firebase';
+import { User } from '../../model/user';
+
 
 /*
   Generated class for the UserProvider provider.
@@ -17,6 +19,7 @@ import * as firebase from 'firebase';
 @Injectable()
 export class UserProvider {
 
+ private listaUser = this.db.list<User>('user-list', );
   //items: Observable<any>;
 
   constructor(public http: HttpClient,
@@ -24,8 +27,9 @@ export class UserProvider {
 
   }
 
-  public saveUser() {
-    this.db.list("/myUsers/").push( "Rafael");
+  saveUser(user: User) {
+    //this.db.list("/myUsers/").push(user);
+    return this.listaUser.push(user);
   }
 
 }

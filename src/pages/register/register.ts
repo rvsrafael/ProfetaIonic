@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from '../../model/user';
+import { UserProvider } from '../../providers/user/user';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 /**
  * Generated class for the RegisterPage page.
@@ -13,13 +16,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-register',
   templateUrl: 'register.html',
 })
+
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: User = new User();
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public userProvider: UserProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    var registro = this.navParams.get('user');
+    if (registro != undefined) {
+      this.user = registro;
+    }
+  }
+  public register(user: any): void {
+    console.log(user);
+    try {
+      this.userProvider.saveUser(user);
+    } catch (error) {
+      console.log("Erro ao efetuar o Cadastro");
+    }
   }
 
 }

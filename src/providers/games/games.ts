@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class GamesProvider {
 
   public eighthGames : any;
-  public apiUrl : string = "https://us-central1-profeta-da-bola.cloudfunctions.net/helloWorld";
+  public apiUrl : string = "/api-profeta";
 
 
   constructor(public http: HttpClient) {
