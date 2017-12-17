@@ -2,5 +2,9 @@
   "name": "ProfetaIonic",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {},
+  "proxies": [{
+      "path": "/api/games",
+      "proxyUrl": "https://us-central1-profeta-da-bola.cloudfunctions.net/games"
+  }]
 }
