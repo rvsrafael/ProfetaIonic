@@ -8,8 +8,6 @@ import { User } from '../../model/user';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
-
 /**
  * Generated class for the LoginPage page.
  *
@@ -25,9 +23,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 export class LoginPage {
 
   listaUser: Observable<User[]>;
-  public userDefault:  User = new User();
+  user:  User = new User();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider ) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public userProvider: UserProvider ) {
   }
 
   ionViewDidLoad() {
@@ -55,12 +55,13 @@ export class LoginPage {
 
   public openHome(): void {
     this.navCtrl.setRoot(HomePage);
-    if (false) {
+  }
 
-    } else {
-
+  public openEfetuarLogin(user: any) {
+    var result = this.userProvider.efetuarLogin(user);
+    if (result) {
+      this.openHome();
     }
-
   }
 
 }

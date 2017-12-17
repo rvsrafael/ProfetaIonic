@@ -32,6 +32,7 @@ export class RegisterPage {
       this.user = registro;
     }
   }
+
   public register(user: any): void {
     console.log(user);
     try {
