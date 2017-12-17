@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { GameProvider } from '../../providers/game/game';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { GamesProvider } from '../../providers/games/games';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+
 
 @Component({
   selector: 'page-home',
@@ -8,20 +11,36 @@ import { GameProvider } from '../../providers/game/game';
 })
 export class HomePage {
 
-  public games: any;
+  public eighthGames: any;
 
-  constructor(public navCtrl: NavController,
-                      public gameProvider: GameProvider)
-  {
-      this.loadGames();
+constructor(public afAuth: AngularFireAuth,
+            public eighthGamesProvider: GamesProvider,
+            public toastCtrl: ToastController
+) {
+    this.loadGames();
+}
 
+  loadGames(){
+      this.eighthGamesProvider.load()
+                                .then(data => {
+                                  this.eighthGames = data;
+      });
   }
 
-  loadGames() {
-    this.gameProvider.load()
-    .then(data => {
-      this.games = data;
+  ionViewDidLoad() {
+    this.afAuth.authState.subscribe(data => {
+
+      if(data.email && data.uid) {
+        this.loadGames();
+      } else {
+        this.toastCtrl.create({
+          message: "Ocorreu um problema no seu login",
+          duration: 3000
+          }).present();
+      }
+
     });
+
   }
 
 }
