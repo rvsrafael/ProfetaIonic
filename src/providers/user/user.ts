@@ -11,6 +11,7 @@ import * as firebase from 'firebase';
 import { User } from '../../model/user';
 import { HomePage } from '../../pages/home/home';
 import { FirebaseListObservable } from "angularfire2/database-deprecated";
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 @Injectable()
@@ -25,37 +26,12 @@ export class UserProvider {
   }
 
   collectionUser(){
-    this.listaUser = this.db.list<User>('user-list', ref => ref.orderByChild('nome').equalTo('x`') );
+    // this.listaUser = this.db.list<User>('user-list', ref => ref.orderByChild('nome').equalTo('rafael') );
     return this.listaUser;
   }
 
   saveUser(user: User) {
-    this.saveLogin(user);
     return this.listaUser.push(user);
-  }
-
-  async saveLogin(user: User) {
-    try{
-        const result = await this.afAuth.auth.createUserWithEmailAndPassword(
-                                          user.email, user.senha);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  async efetuarLogin(user: User) {
-    try{
-        const result = await this.afAuth.auth.signInWithEmailAndPassword(
-                                          user.email, user.senha);
-
-        console.log("Result do login: "+ result);
-
-        return result;
-
-
-    } catch (e) {
-      console.error(e);
-    }
   }
 
 }

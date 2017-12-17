@@ -8,6 +8,10 @@ import { User } from '../../model/user';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -27,7 +31,9 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public userProvider: UserProvider ) {
+              public afAuth: AngularFireAuth,
+              public userProvider: UserProvider,
+              public toastCtrl: ToastController ) {
   }
 
   ionViewDidLoad() {
@@ -57,11 +63,17 @@ export class LoginPage {
     this.navCtrl.setRoot(HomePage);
   }
 
-  public openEfetuarLogin(user: any) {
-    var result = this.userProvider.efetuarLogin(user);
-    if (result) {
-      this.openHome();
-    }
+  async openEfetuarLogin(user: any) {
+      try{
+          const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.senha);
+          this.openHome();
+      } catch (e) {
+        console.error(e);
+        this.toastCtrl.create({
+          message: e.message,
+          duration: 3000
+          }).present();
+      }
   }
 
 }
